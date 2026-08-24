@@ -1,0 +1,26 @@
+name: Run My Daily Bot
+
+on:
+  schedule:
+    - cron: '0 1 * * *' # รันทุกวันตอน 8 โมงเช้าเวลาไทย
+  workflow_dispatch: # ทำให้เรามีปุ่มกดรันเองได้ด้วย
+
+jobs:
+  run-bot-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Libraries
+        run: pip install -r requirements.txt
+
+      - name: Run my Python script
+        # ตรงนี้สำคัญ: ถ้าไฟล์คุณไม่ได้ชื่อ bot.py ให้แก้ให้ตรงกับชื่อไฟล์ของคุณนะครับ
+        run: python bot.py
