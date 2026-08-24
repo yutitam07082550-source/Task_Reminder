@@ -1,0 +1,30 @@
+# 🤖 Automated Daily Briefing Bot
+
+บอทสรุปข่าวเทคโนโลยี/วิทยาศาสตร์ประจำวัน 3 เรื่อง พร้อมดึงรายการงานค้างใน Notion ส่งเข้า Discord Webhook อัตโนมัติทุกเช้า 08:00 น. (เวลาประเทศไทย)
+
+## 📌 วิธีการติดตั้งและขอ Credentials
+
+### 1. วิธีเอา Discord Webhook URL (1 นาที)
+1. เปิดแอป Discord ไปที่ Server ของคุณ
+2. คลิกขวาที่ชื่อ Channel ที่ต้องการให้บอทส่งข้อความ (เช่น `#daily-briefing`) -> เลือก **Edit Channel (แก้ไขช่อง)**
+3. เลื่อนไปที่เมนู **Integrations (การเชื่อมต่อ)** -> กด **Webhooks**
+4. กด **New Webhook** ตั้งชื่อตามต้องการ แล้วกด **Copy Webhook URL**
+
+### 2. วิธีเอา Notion Integration Token & Database ID (2 นาที)
+1. เข้าเว็บ [https://www.notion.so/my-integrations](https://www.notion.so/my-integrations)
+2. กด **+ New integration** ตั้งชื่อบอท (เช่น `Daily Briefing Bot`) เลือก Workspace แล้วกด **Submit**
+3. คัดลอก **Internal Integration Secret** (ขึ้นต้นด้วย `secret_...`)
+4. เปิดหน้าตาราง Notion (Database) ที่เก็บงานของคุณ กดปุ่ม **...** มุมขวาบน -> เลือก **Connections** -> กดเพิ่ม Integration ที่เพิ่งสร้าง
+5. คัดลอก URL ของหน้า Notion Database โดย Database ID คือรหัส 32 หลักระหว่าง `/` ถึง `?`
+
+---
+
+## 🛠️ การตั้งค่าใน GitHub Secrets (สำหรับรันบน Cloud ฟรี 24/7)
+
+1. นำโค้ดโปรเจกต์นี้ขึ้น **GitHub Repository** ของคุณ
+2. ไปที่หน้า Repository บน GitHub -> **Settings** -> **Secrets and variables** -> **Actions**
+3. กด **New repository secret** เพิ่ม 3 ตัวแปรดังนี้:
+   * `DISCORD_WEBHOOK_URL` = (URL Webhook จาก Discord)
+   * `NOTION_TOKEN` = (Token ขึ้นต้นด้วย `secret_...`)
+   * `NOTION_DATABASE_ID` = (Database ID 32 หลัก)
+4. GitHub Actions จะรันสรุปข่าวและงานส่งเข้า Discord ทุกเช้า 08:00 น. (เวลาไทย) โดยที่คุณ**ไม่ต้องเปิดคอมพิวเตอร์ทิ้งไว้**เลยครับ!
