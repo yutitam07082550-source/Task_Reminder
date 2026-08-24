@@ -23,4 +23,4 @@ jobs:
 
       - name: Run my Python script
         # ตรงนี้สำคัญ: ถ้าไฟล์คุณไม่ได้ชื่อ bot.py ให้แก้ให้ตรงกับชื่อไฟล์ของคุณนะครับ
-        run: python bot.py
+        run: python main.py
