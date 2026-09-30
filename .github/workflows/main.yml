@@ -3,7 +3,7 @@ name: Run My Daily Bot
 on:
   schedule:
     # 01:15 UTC = 08:15 AM (เวลาไทย) - หลบเวลารถติด บอทจะส่งตรงเวลาเป๊ะขึ้นมาก!
-    - cron: '15 1 * * *'
+    - cron: '8 1 * * *'
   workflow_dispatch:
 
 jobs:
